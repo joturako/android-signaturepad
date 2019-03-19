@@ -14,7 +14,7 @@ public class TimedPoint {
 
     public float velocityFrom(TimedPoint start) {
         long diff = this.timestamp - start.timestamp;
-        if(diff <= 0) {
+        if (diff <= 0) {
             diff = 1;
         }
         float velocity = distanceTo(start) / diff;
@@ -25,6 +25,8 @@ public class TimedPoint {
     }
 
     public float distanceTo(TimedPoint point) {
-        return (float) Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2));
+//        return (float) Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2));
+        return (float) Math.sqrt(Math.pow(point.x - this.x, 2));
+
     }
 }
