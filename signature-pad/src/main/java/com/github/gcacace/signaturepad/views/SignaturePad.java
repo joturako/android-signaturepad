@@ -90,7 +90,7 @@ public class SignaturePad extends View {
 
         //Fixed parameters
         mPaint.setAntiAlias(true);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
 
@@ -210,11 +210,19 @@ public class SignaturePad extends View {
                 if (isDoubleClick()) break;
                 mLastTouchX = eventX;
                 mLastTouchY = eventY;
-                addPoint(getNewPoint(eventX, eventY));
+//                mLastWidth = 1;
+//                addPoint(getNewPoint(eventX, eventY));
                 if (mOnSignedListener != null) mOnSignedListener.onStartSigning();
 
             case MotionEvent.ACTION_MOVE:
                 resetDirtyRect(eventX, eventY);
+//                int historySize = event.getHistorySize();
+//                for (int i = 0; i < historySize; i++) {
+//                    float historicalX = event.getHistoricalX(i);
+//                    float historicalY = event.getHistoricalY(i);
+//                    expandDirtyRect(historicalX, historicalY);
+//                    addPoint(getNewPoint(historicalX, historicalY));
+//                }
                 addPoint(getNewPoint(eventX, eventY));
                 setIsEmpty(false);
                 break;

@@ -17,7 +17,7 @@ public class TimedPoint {
         if (diff <= 0) {
             diff = 1;
         }
-        float velocity = distanceTo(start) / diff;
+        float velocity = vectorRatio(start) ;
         if (Float.isInfinite(velocity) || Float.isNaN(velocity)) {
             velocity = 0;
         }
@@ -28,5 +28,17 @@ public class TimedPoint {
 //        return (float) Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2));
         return (float) Math.sqrt(Math.pow(point.x - this.x, 2));
 
+    }
+
+    public float vectorRatio(TimedPoint point) {
+        float maxSpeed = 2f;
+        float minSpeed = 0.5f;
+        float vx = Math.abs(point.x - this.x);
+        float vy = Math.abs(point.y - this.y);
+        if (vy == 0) {//drawing a line down
+            return minSpeed;
+        } else {
+            return (float) (maxSpeed * vx / Math.sqrt(Math.pow(vy, 2) + Math.pow(vx, 2)));
+        }
     }
 }

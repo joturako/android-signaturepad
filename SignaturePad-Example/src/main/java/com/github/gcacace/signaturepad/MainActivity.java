@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
-        mSignaturePad.setMinWidth(2);
+        mSignaturePad.setMinWidth(1);
         mSignaturePad.setMaxWidth(8);
         mSignaturePad.setVelocityFilterWeight(0.5f);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
